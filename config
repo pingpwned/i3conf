@@ -72,7 +72,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+Shift+v split v
@@ -200,6 +200,9 @@ bar {
 	separator_symbol "⁞"
 }
 exec xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --left-of eDP1 --output DP1 --right-of eDP1 --mode 1920x1080
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #fc05be #000000 #ffffff #2e9ef4   #285577
 
 # GAPS
 
