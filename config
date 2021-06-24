@@ -99,8 +99,14 @@ bindsym $mod+a focus parent
 
 # change keyboard layout
 
-exec --no-startup-id "setxkbmap us,cz,ru -option 'grp:lalt_lshift_toggle'"
+#exec --no-startup-id "setxkbmap cz,us,ru -option 'grp:lalt_lshift_toggle'"
+
+exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+
+# change speed of keyboard
 exec --no-startup-id "xset r rate 130 60"
+
+
 #exec --no-startup-id "gxkb"
 
 #bindsym $mod+O exec i3lock -n -e -f
@@ -161,10 +167,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -187,7 +193,13 @@ bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-mute 0 false && pactl set-
 #bindsym $mod+XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 bindsym $mod+XF86MonBrightnessDown exec brightnessctl s 200-
 bindsym $mod+XF86MonBrightnessUp exec brightnessctl s 200+
+
+#PrintScreen Shutter
 bindsym $mod+p exec shutter -s -e -n -o '~/Pictures/%y-%m-%d-%H-%M-%S.png'
+# PrintScreen Flameshot
+bindsym Print exec flameshot gui
+
+bindsym $mod+b exec firefox
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -205,7 +217,9 @@ exec xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --lef
 client.focused          #fc05be #000000 #ffffff #2e9ef4   #285577
 
 # GAPS
-
 for_window [class="^.*"] border pixel 0 
-gaps inner 15 
-gaps outer 15
+gaps inner 5 
+gaps outer 5
+
+#ssh-agent & keyring
+exec ssh-add
